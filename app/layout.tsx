@@ -1,3 +1,5 @@
+
+
 export const metadata = {
   title: "EsportsClash – Compete. Win. Dominate.",
   description:
@@ -9,6 +11,7 @@ export const metadata = {
     "Valorant tournaments",
     "Esports India",
   ],
+  
   openGraph: {
     title: "EsportsClash",
     description:
@@ -47,3 +50,10 @@ export default function RootLayout({
     </html>
   );
 }
+import type { Metadata } from "next";
+
+export const metadataBase: Metadata = {
+  metadataBase: new URL("https://esportsclash.in"),
+  title: "EsportsClash",
+  description: "Competitive esports tournaments platform",
+};
