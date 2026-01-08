@@ -6,36 +6,19 @@ export default function HomePage() {
   return (
     <main className="bg-black text-white">
 
-      {/* HERO */}
-      <section className="min-h-screen flex items-center justify-center px-4">
-        <div className="max-w-4xl text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-            <span className="text-purple-500">Compete.</span>{" "}
-            Win. Dominate.
-          </h1>
+      {/* HERO VISUAL */}
+<div className="relative">
+  <div className="absolute -inset-6 bg-purple-600/30 blur-3xl rounded-full animate-pulse"></div>
 
-          <p className="text-gray-400 text-base sm:text-lg mb-8">
-            Join competitive esports tournaments for BGMI, Free Fire,
-            Valorant and more. Built for serious gamers.
-          </p>
+  <div className="relative overflow-hidden rounded-2xl border border-gray-800">
+    <img
+      src="/hero-poster.gif"
+      alt="Esports Action"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/tournaments"
-              className="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded font-medium"
-            >
-              Explore Tournaments
-            </Link>
-
-            <Link
-              href="/login"
-              className="border border-gray-600 px-6 py-3 rounded"
-            >
-              Get Started
-            </Link>
-          </div>
-        </div>
-      </section>
       {/* FEATURES */}
       <section className="py-20 border-t border-gray-800">
         <div className="max-w-6xl mx-auto px-4">
@@ -109,3 +92,47 @@ export default function HomePage() {
     </main>
   );
 }
+{/* ================= GAMES SHOWCASE ================= */}
+<section className="w-full py-24 border-t border-gray-800">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-14">
+      Popular Games
+    </h2>
+
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center">
+      {[
+        {
+          name: "BGMI",
+          logo: "/games/bgmi.png",
+        },
+        {
+          name: "Free Fire",
+          logo: "/games/freefire.png",
+        },
+        {
+          name: "Valorant",
+          logo: "/games/valorant.png",
+        },
+        {
+          name: "Clash of Clans",
+          logo: "/games/coc.png",
+        },
+        {
+          name: "Fortnite",
+          logo: "/games/fortnite.png",
+        },
+      ].map((game) => (
+        <div
+          key={game.name}
+          className="group bg-[#12121a] border border-gray-800 rounded-xl p-6 flex items-center justify-center hover:border-purple-500 transition"
+        >
+          <img
+            src={game.logo}
+            alt={game.name}
+            className="h-12 grayscale group-hover:grayscale-0 transition"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
