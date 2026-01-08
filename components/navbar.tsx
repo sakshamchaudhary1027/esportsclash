@@ -131,22 +131,47 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      {mobileOpen && (
-        <div className="md:hidden w-full bg-black border-t border-gray-800 px-4 py-4 space-y-4">
-          <Link href="/events" onClick={() => setMobileOpen(false)}>
-            Events
-          </Link>
-          <Link href="/about" onClick={() => setMobileOpen(false)}>
-            About Us
-          </Link>
-          <Link href="/games" onClick={() => setMobileOpen(false)}>
-            Games
-          </Link>
-          <Link href="/profile" onClick={() => setMobileOpen(false)}>
-            Profile
-          </Link>
-        </div>
-      )}
+      {/* MOBILE MENU */}
+{mobileOpen && (
+  <div className="md:hidden w-full bg-black border-t border-gray-800">
+    <div className="flex flex-col px-6 py-6 space-y-4 text-base">
+
+      <Link
+        href="/events"
+        onClick={() => setMobileOpen(false)}
+        className="w-full px-4 py-3 rounded-lg bg-[#12121a] border border-gray-800 hover:border-purple-500"
+      >
+        Events
+      </Link>
+
+      <Link
+        href="/games"
+        onClick={() => setMobileOpen(false)}
+        className="w-full px-4 py-3 rounded-lg bg-[#12121a] border border-gray-800 hover:border-purple-500"
+      >
+        Games
+      </Link>
+
+      <Link
+        href="/about"
+        onClick={() => setMobileOpen(false)}
+        className="w-full px-4 py-3 rounded-lg bg-[#12121a] border border-gray-800 hover:border-purple-500"
+      >
+        About Us
+      </Link>
+
+      <Link
+        href="/profile"
+        onClick={() => setMobileOpen(false)}
+        className="w-full px-4 py-3 rounded-lg bg-purple-600 text-white text-center"
+      >
+        Profile
+      </Link>
+
+    </div>
+  </div>
+)}
+
     </header>
   );
 }
