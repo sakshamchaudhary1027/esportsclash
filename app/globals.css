@@ -65,3 +65,13 @@ body {
 .animate-pulseSlow {
   animation: pulseSlow 8s ease-in-out infinite;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* iOS text fix */
+body {
+  -webkit-text-size-adjust: 100%;
+}
