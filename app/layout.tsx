@@ -1,3 +1,33 @@
+export const metadata = {
+  title: "EsportsClash – Compete. Win. Dominate.",
+  description:
+    "EsportsClash is a competitive esports platform to join and host tournaments for BGMI, Free Fire, Valorant and more.",
+  keywords: [
+    "esports tournaments",
+    "BGMI tournaments",
+    "Free Fire tournaments",
+    "Valorant tournaments",
+    "Esports India",
+  ],
+  openGraph: {
+    title: "EsportsClash",
+    description:
+      "Join competitive esports tournaments and win real prizes.",
+    url: "https://esportsclash.in",
+    siteName: "EsportsClash",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "EsportsClash",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+};
+
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
