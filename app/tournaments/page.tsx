@@ -1,3 +1,5 @@
+export const TEST = "TOURNAMENT PAGE UPDATED";
+
 const tournaments = [
   {
     id: 1,
@@ -22,7 +24,7 @@ const tournaments = [
 export default function TournamentsPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold mb-6">Tournaments</h1>
+<h1 className="text-3xl font-bold mb-6">TOURNAMENTS UPDATED</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {tournaments.map((t) => (
