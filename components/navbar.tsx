@@ -11,12 +11,12 @@ const gamesData = {
 
 export default function Navbar() {
   const [gamesOpen, setGamesOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [activeCategory, setActiveCategory] =
     useState<keyof typeof gamesData>("featured");
 
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // close on outside click
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -29,15 +29,17 @@ export default function Navbar() {
   }, []);
 
   return (
-<header className="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-gray-800 w-full">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-black/90 backdrop-blur border-b border-gray-800">
+      
+      {/* FULL WIDTH BAR */}
+      <div className="w-full px-4 h-16 flex items-center justify-between">
 
         {/* LOGO */}
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold text-white">
           Esports<span className="text-purple-500">Clash</span>
         </Link>
 
-        {/* NAV */}
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300">
 
           {/* GAMES */}
@@ -56,38 +58,23 @@ export default function Navbar() {
 
                 {/* CATEGORIES */}
                 <div className="space-y-3">
-                  <button
-                    onClick={() => setActiveCategory("featured")}
-                    className={`w-full text-left px-4 py-3 rounded-lg border ${
-                      activeCategory === "featured"
-                        ? "border-purple-500 bg-purple-600/20"
-                        : "border-gray-700 hover:border-purple-500"
-                    }`}
-                  >
-                    Featured Games
-                  </button>
-
-                  <button
-                    onClick={() => setActiveCategory("trending")}
-                    className={`w-full text-left px-4 py-3 rounded-lg border ${
-                      activeCategory === "trending"
-                        ? "border-purple-500 bg-purple-600/20"
-                        : "border-gray-700 hover:border-purple-500"
-                    }`}
-                  >
-                    Trending Games
-                  </button>
-
-                  <button
-                    onClick={() => setActiveCategory("new")}
-                    className={`w-full text-left px-4 py-3 rounded-lg border ${
-                      activeCategory === "new"
-                        ? "border-purple-500 bg-purple-600/20"
-                        : "border-gray-700 hover:border-purple-500"
-                    }`}
-                  >
-                    New Games
-                  </button>
+                  {(
+                    Object.keys(gamesData) as Array<
+                      keyof typeof gamesData
+                    >
+                  ).map((key) => (
+                    <button
+                      key={key}
+                      onClick={() => setActiveCategory(key)}
+                      className={`w-full text-left px-4 py-3 rounded-lg border ${
+                        activeCategory === key
+                          ? "border-purple-500 bg-purple-600/20"
+                          : "border-gray-700 hover:border-purple-500"
+                      }`}
+                    >
+                      {key.charAt(0).toUpperCase() + key.slice(1)} Games
+                    </button>
+                  ))}
 
                   <Link
                     href="/games"
@@ -97,7 +84,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                {/* GAMES LIST (ALWAYS SHOWS) */}
+                {/* GAMES LIST */}
                 <div className="bg-black/40 rounded-xl p-4 space-y-2">
                   {gamesData[activeCategory].map((game) => (
                     <p
@@ -114,32 +101,52 @@ export default function Navbar() {
 
           {/* EVENTS */}
           <div className="glow-border">
-            <Link
-              href="/events"
-              className="block px-4 py-2 rounded-md hover:text-white"
-            >
+            <Link href="/events" className="block px-4 py-2">
               Events
             </Link>
           </div>
 
           {/* ABOUT */}
           <div className="glow-border">
-            <Link
-              href="/about"
-              className="block px-4 py-2 rounded-md hover:text-white"
-            >
+            <Link href="/about" className="block px-4 py-2">
               About Us
             </Link>
           </div>
 
           {/* PROFILE */}
           <div className="glow-border">
-            <button className="w-9 h-9 rounded-full bg-purple-600 flex items-center justify-center text-white font-semibold">
+            <button className="w-9 h-9 rounded-full bg-purple-600 text-white font-semibold">
               S
             </button>
           </div>
         </nav>
+
+        {/* MOBILE HAMBURGER */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* MOBILE MENU */}
+      {mobileOpen && (
+        <div className="md:hidden w-full bg-black border-t border-gray-800 px-4 py-4 space-y-4">
+          <Link href="/events" onClick={() => setMobileOpen(false)}>
+            Events
+          </Link>
+          <Link href="/about" onClick={() => setMobileOpen(false)}>
+            About Us
+          </Link>
+          <Link href="/games" onClick={() => setMobileOpen(false)}>
+            Games
+          </Link>
+          <Link href="/profile" onClick={() => setMobileOpen(false)}>
+            Profile
+          </Link>
+        </div>
+      )}
     </header>
   );
 }
