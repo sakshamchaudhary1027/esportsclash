@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { isAuthenticated, logout } from "@/lib/auth";
+import { isAuthenticated, logout } from "../../lib/auth";
 
 export default function DashboardPage() {
   const router = useRouter();

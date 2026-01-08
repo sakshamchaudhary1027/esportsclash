@@ -1,16 +1,34 @@
-export default function LoginPage() {
-  return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
+"use client";
 
-      <input className="w-full border p-2 mb-3" placeholder="Email" />
+import { useRouter } from "next/navigation";
+import { login } from "../../lib/auth";
+
+export default function LoginPage() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    login(); // fake login
+    router.push("/dashboard");
+  };
+
+  return (
+    <div className="max-w-md mx-auto mt-20">
+      <h1 className="text-3xl font-bold mb-6">Login</h1>
+
       <input
+        placeholder="Email"
         className="w-full border p-2 mb-3"
+      />
+      <input
         placeholder="Password"
         type="password"
+        className="w-full border p-2 mb-4"
       />
 
-      <button className="w-full bg-black text-white py-2">
+      <button
+        onClick={handleLogin}
+        className="w-full bg-black text-white py-2"
+      >
         Login
       </button>
     </div>
