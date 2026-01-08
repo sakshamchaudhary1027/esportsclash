@@ -42,11 +42,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white">
-        <Navbar />
-        <main className="min-h-screen px-6 py-10">{children}</main>
-        <Footer />
-      </body>
+      <body className="w-full min-h-screen bg-[#0b0b0f]">
+  <Navbar />
+  <main className="w-full min-h-screen">
+    {children}
+  </main>
+  <Footer />
+</body>
+
     </html>
   );
 }
