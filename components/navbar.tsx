@@ -1,5 +1,9 @@
 "use client";
 
+import { signIn, signOut, useSession } from "next-auth/react";
+
+"use client";
+
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
@@ -175,3 +179,14 @@ export default function Navbar() {
     </header>
   );
 }
+const { data: session } = useSession();
+
+{!session ? (
+  <button onClick={() => signIn("google")}>
+    Login with Google
+  </button>
+) : (
+  <button onClick={() => signOut()}>
+    Logout
+  </button>
+)}

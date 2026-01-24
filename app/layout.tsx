@@ -21,3 +21,11 @@ export default function RootLayout({
     </html>
   );
 }
+import Providers from "./providers";
+
+<body>
+  <Providers>
+    <Navbar />
+    
+  </Providers>
+</body>
