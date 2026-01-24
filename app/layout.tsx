@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "EsportsClash",
@@ -15,17 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-[#0b0b0f] text-white">
-        <Navbar />
-        {children}
+        <Providers>
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
 }
-import Providers from "./providers";
-
-<body>
-  <Providers>
-    <Navbar />
-    
-  </Providers>
-</body>
