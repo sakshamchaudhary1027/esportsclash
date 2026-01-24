@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  tournaments Tournament[]
+}
+
+model Tournament {
+  id          String   @id @default(uuid())
+  title       String
+  game        String
+  prize       String
+  poster      String
+  description String
+  date        DateTime
+  status      TournamentStatus @default(DRAFT)
+
+  organizerId String
+  organizer   User @relation(fields: [organizerId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  ORGANIZER
+  USER
+}
+
+enum TournamentStatus {
+  DRAFT
+  LIVE
+  COMPLETED
+}
