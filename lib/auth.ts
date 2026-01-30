@@ -1,16 +1,12 @@
-export function login() {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("loggedIn", "true");
-  }
-}
+import GoogleProvider from "next-auth/providers/google";
+import type { NextAuthOptions } from "next-auth";
 
-export function logout() {
-  if (typeof window !== "undefined") {
-    localStorage.removeItem("loggedIn");
-  }
-}
-
-export function isAuthenticated() {
-  if (typeof window === "undefined") return false;
-  return localStorage.getItem("loggedIn") === "true";
-}
+export const authOptions: NextAuthOptions = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+  ],
+  secret: process.env.NEXTAUTH_SECRET,
+};
